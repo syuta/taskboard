@@ -7,13 +7,13 @@ Requirements
 
 node.js 0.2.4 or later.
 socket.io 0.6.1 or later.
+dirty 0.9 or later.
+
 
 How to Use
 
 1.git clone {this git repository}
-
 2.cd taskboard
-
 3.node ./server/main.js
 
 
