@@ -1,0 +1,16 @@
+Description
+
+shared taskboard.
+
+
+Requirements
+
+node.js 0.2.4 or later.
+socket.io 0.6.1 or later.
+
+TODO
+
+・edit postit property
+・split board  
+・create image,Text Object on board.
+

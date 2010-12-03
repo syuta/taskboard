@@ -1,0 +1,265 @@
+@charset "utf-8";
+/* CSS Document */
+
+/* ------------------------------------------------------
+   html5doctor.com Reset Stylesheet
+   v1.4
+   2009-07-27
+   Author: Richard Clark - http://richclarkdesign.com
+ ------------------------------------------------------ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, dialog, figure, footer, header,
+hgroup, menu, nav, section,
+time, mark, audio, video,
+svg, canvas {
+	margin:0;
+	padding:0;
+	border:0;
+	outline:0;
+	font-size:100%;
+	font-weight:normal;
+	vertical-align:baseline;
+	background:transparent;
+}
+body {
+	line-height:1;
+	font-size:80%;
+	font-family:
+	   Helvetica,
+	   Clean,
+	   Meiryo,
+	   "CI",
+	   "Hiragino Kaku Gothic Pro",
+	   Osaka,
+	   "MS P Gothic",
+	   Arial,
+	   sans-serif;
+}
+
+article, aside, dialog, figure, footer, header,
+hgroup, nav, section {
+	display:block;
+}
+
+nav ul {
+	list-style:none;
+}
+
+blockquote, q {
+	quotes:none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content:'';
+	content:none;
+}
+
+a {
+	margin:0;
+	padding:0;
+	border:0;
+	font-size:100%;
+	vertical-align:baseline;
+	background:transparent;
+}
+
+ins {
+	background-color:#ff9;
+	color:#000;
+	text-decoration:none;
+}
+
+mark {
+	background-color:#ff9;
+	color:#000;
+	font-style:italic;
+	font-weight:bold;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+abbr[title], dfn[title] {
+	border-bottom:1px dotted #000;
+	cursor:help;
+}
+
+table {
+	border-collapse:collapse;
+	border-spacing:0;
+}
+
+hr {
+    display:block;
+    height:1px;
+    border:0;
+    border-top:1px solid #cccccc;
+    margin:1em 0;
+    padding:0;
+}
+
+input, select {
+	vertical-align:middle;
+}
+
+
+/* ------------------------------------------------------
+   clearfix
+ ------------------------------------------------------ */
+.clear:after { content: "."; display:block; height: 0; clear: both; visibility: hidden;}
+.clear { display: inline-table; min-height: 1%;}
+/* Hides from IE-mac \*/
+* html .clear { height:1%;}
+.clear { display: block;}
+
+html
+{
+	width:100%;
+	height:100%;
+	overflow:hidden;
+}
+	html body
+	{
+		width:100%;
+		height:100%;
+		overflow:hidden;
+	}
+
+#header
+{
+	position:absolute;
+	display:block;
+	overflow:hidden;
+	z-index:1000;
+	left:0;
+	right:0;
+	height:30px;
+	border-top:1px solid #111;
+	border-bottom:1px solid #000;
+	
+	background:#111;
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#222), to(#111));
+	
+	-moz-box-shadow: 0px 0px 7px #333, inset 1px 1px 0px #444;
+	-webkit-box-shadow: 0px 0px 7px #333, inset 1px 1px 0px #444;
+	box-shadow: 0px 0px 7px #333, inset 1px 1px 0px #444;
+}
+	#header #siteID
+	{
+		float:left;
+		padding:8px;
+		font-weight:600;
+		font-size:90%;
+		text-shadow: -1px -1px 0px #000;
+		color:#fff;
+	}
+	#header #nav
+	{
+		float:right;
+	}
+		#header #nav ul
+		{}
+			#header #nav ul li
+			{
+				padding:5px;
+			}
+				#header #nav ul li img
+				{
+					width:20px;
+				}
+	
+
+#board
+{
+	position:absolute;
+	left:0;
+	top:30px;
+	right:0;
+	bottom:0;
+	overflow:hidden;
+	z-index:0;
+}
+	#board #droparea
+	{
+		width:100%;
+		height:100%;
+		background:#eee;
+		background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ccc), to(#fff));
+	}
+
+
+.postit
+{
+	top: 50px;          
+	left: 70px;       
+	margin:0;
+	padding:5px 0 0 0;
+	position:absolute;
+	border:1px solid #d8c336;
+	background:#feee75;
+	background: -moz-linear-gradient(top, #feee75, #fcf0a1);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#feee75), to(#fcf0a1));
+	background: gradient(linear, 0% 0%, 0% 100%, from(#feee75), to(#fcf0a1));
+	
+	-moz-box-shadow: 1px 1px 5px #999, inset 1px 1px 0px #fffadb;
+	-webkit-box-shadow: 1px 1px 5px #999, inset 1px 1px 0px #fffadb;
+	box-shadow: 1px 1px 5px #999, inset 1px 1px 0px #fffadb;
+}
+.postit.green
+{
+	border:1px solid #8ebf4e;
+	background:#b9e087;
+	background: -moz-linear-gradient(top, #b9e087, #d4edb4);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b9e087), to(#d4edb4));
+	background: gradient(linear, 0% 0%, 0% 100%, from(#b9e087), to(#d4edb4));
+	
+	-moz-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #eefcdb;
+	-webkit-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #eefcdb;
+	box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #eefcdb;
+}
+.postit.pink
+{
+	border:1px solid #e881a0;
+	background:#ffb4cb;
+	background: -moz-linear-gradient(top, #ffb4cb, #ffd1de);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#ffb4cb), to(#ffd1de));
+	background: gradient(linear, 0% 0%, 0% 100%, from(#ffb4cb), to(#ffd1de));
+	
+	-moz-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #ffeaf0;
+	-webkit-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #ffeaf0;
+	box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #ffeaf0;
+}
+.postit.blue
+{
+	border:1px solid #63a5cc;
+	background:#8ec3e2;
+	background: -moz-linear-gradient(top, #8ec3e2, #baddf2);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#8ec3e2), to(#baddf2));
+	background: gradient(linear, 0% 0%, 0% 100%, from(#8ec3e2), to(#baddf2));
+	
+	-moz-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #e0f3ff;
+	-webkit-box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #e0f3ff;
+	box-shadow: 1px 1px 5px #bbb, inset 1px 1px 0px #e0f3ff;
+}
+	.postit textarea
+	{
+		display:block;
+		margin:0;
+		padding:10px;
+		outline:none;
+		border:none;
+		color:#333;
+		line-height:140%;
+		background:none;
+	}
