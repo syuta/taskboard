@@ -29,6 +29,9 @@ socket.on('message', function(data){
 		  case "changeMessage":
 		      changeMessage(postit.divId,postit.message);
 		      break;
+		  case "editMessage":
+		      editMessage(postit.divId,postit.color);
+		      break;
 		  case "deleteMessage":
 		      deleteMessage(postit.divId);
 		      break;
@@ -72,7 +75,18 @@ function sendChangeMessage(id,message){
 	    }));
 }
 
-//websocket通信用:textAre削除のためのJSONデータを作成して送る
+//websocket通信用:postit編集のためのJSONデータを作成して送る
+function sendEditMessage(id,color){
+    socket.send(
+	JSON.stringify(
+	    {
+		actionId:"editMessage",
+		divId:id,
+		color:color
+	    }));
+}
+
+//websocket通信用:postit削除のためのJSONデータを作成して送る
 function sendDeleteMessage(id){
     socket.send(
 	JSON.stringify(

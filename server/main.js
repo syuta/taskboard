@@ -55,6 +55,9 @@ sio.on('connection', function(client) {
 		case 'movePointEnd':
 		    logic.move(divId,message);	
 		    break;
+		case 'editMessage':
+		    logic.edit(divId,message);
+		    break;
 		case 'deleteMessage':
 		    logic.remove(divId);
 		    break;

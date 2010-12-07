@@ -16,9 +16,13 @@ var postitDao = require('dirty')('db/postit.db');
  */
 exports.findAll = function initData(){
 
+    console.log('findAll');
+
     var array = [];    
     postitDao.forEach(
 	function(key, val) {
+	    console.log('key=' + key);
+	    console.log('val=' + val);
 	    array.push(val);
 	}
     );
@@ -57,12 +61,32 @@ exports.update = function(divId,message){
 exports.move = function(divId,message){
     console.log("movePoint");
     var mpostit = JSON.parse(postitDao.get(divId));
-    mpostit.pointY = JSON.parse(message).pointY;
-    mpostit.pointX = JSON.parse(message).pointX;
+    
+    var pointY = JSON.parse(message).pointY;
+    var pointX = JSON.parse(message).pointX;
+    if(pointY !== undefined) {
+	mpostit.pointY = pointY;	
+    }
+    if(pointX !== undefined) {
+	mpostit.pointX = pointX;	
+    }
     console.log("mpostit.pointY=" + mpostit.pointY);
     console.log("mpostit.pointX=" + mpostit.pointX);
     postitDao.set(divId, JSON.stringify(mpostit));
 };
+
+/**
+ * postidデータを編集する.
+ * @param divId  
+ */
+exports.edit =function(divId,message){
+    console.log("edit");
+    var mpostit = JSON.parse(postitDao.get(divId));
+    mpostit.color = JSON.parse(message).color;
+    console.log(mpostit);
+    postitDao.set(divId, JSON.stringify(mpostit));
+};
+
 
 /**
  * postidデータを削除する.

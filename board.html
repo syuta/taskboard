@@ -4,6 +4,7 @@
         <meta charset="UTF-8" />
         <title>white board</title>
         <link rel="stylesheet" href="css/default.css" type="text/css" />
+        <link rel="stylesheet" href="css/jquery-ui-1.8.6.custom.css" type="text/css" />
     </head>
     <body>
     	<header id="header" class="clear">
@@ -18,9 +19,19 @@
         <div id="board">
         	<div id="droparea"></div>
         </div>
+	
+	<!-- postit情報変更ダイアログ -->
+	<div id="dialog">
+	  付箋の色<br>
+	  <input type="radio" name="color" value="green">green&nbsp;
+	  <input type="radio" name="color" value="pink">pink&nbsp;
+	  <input type="radio" name="color" value="blue">blue&nbsp;
+	  <input type="radio" name="color" value="yellow">yellow&nbsp;
+	</div>
         
         <div id='msg'></div>
         <script src="client/jquery-1.4.3.min.js"></script>
+        <script src="client/jquery-ui-1.8.6.custom.min.js"></script>
         <script src="http://cdn.socket.io/stable/socket.io.js"></script>
         <script src="client/socket.js" type="text/javascript"></script>
         <script src="client/client.js" type="text/javascript"></script>

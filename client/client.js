@@ -49,13 +49,13 @@ $(window).bind("load",
 			      var id = orgEvent.dataTransfer.getData('Text');
 			      var target = $('#' + id)[0];
 
-			      var pointX = orgEvent.offsetX + "px";
-			      var pointY = orgEvent.offsetY + "px";
+			      var pointX = orgEvent.offsetX;
+			      var pointY = orgEvent.offsetY;
 
 			      if(target) {
 				  //DIV要素作成
 				  var divId = create_privateid(10);
-				  createDiv(divId,pointY,pointX,"");
+				  createDiv(divId,pointY,pointX,"","");
 				  sendCreateDiv(divId,pointY,pointX);
 				  
 			      }
@@ -69,9 +69,11 @@ $(window).bind("load",
 	      url: "/init",
 	      data: "",
 	      success: function(data){
+		  console.log("initialize.");
 		  for(var record in data){
 		      var postit = JSON.parse(data[record]);
-		      createDiv(postit.divId,postit.pointY,postit.pointX,postit.message);
+		      console.log(postit);
+		      createDiv(postit.divId,postit.pointY,postit.pointX,postit.message,postit.color);
 		  }
 	      }
 	  });
@@ -81,8 +83,9 @@ $(window).bind("load",
  })();
 
 //div要素作成
-function createDiv(divId,pointY,pointX,message){
-    
+function createDiv(divId,pointY,pointX,message,color){
+    console.log("pointY=" + pointY);
+    console.log("pointX=" + pointX);
     $(document.createElement("div"))
 	.attr('id',divId)
 	.css({
@@ -90,7 +93,8 @@ function createDiv(divId,pointY,pointX,message){
 		 top:pointY,
 		 left:pointX
 	     })
-        .addClass("postit green")
+        .addClass("postit")
+        .addClass(color)
 	.mousemove(
 	    function(e){
 		
@@ -140,6 +144,7 @@ function createDiv(divId,pointY,pointX,message){
 		  })
 	.appendTo("#droparea")
 	.append(createTextArea(message))
+	.append(createEditButton())
 	.append(createDeleteButton());
     
 }
@@ -147,6 +152,16 @@ function createDiv(divId,pointY,pointX,message){
 //テキストエリア内容変更
 function changeMessage(id,message){
     $('#' + id + '>textArea').val(message);
+}
+
+//付箋の編集
+function editMessage(id,color)　{
+    $('#' + id)
+	.removeClass("green")
+	.removeClass("blue")
+	.removeClass("pink")
+	.removeClass("white")
+	.addClass(color);
 }
 
 //付箋の削除
@@ -173,6 +188,15 @@ function createTextArea(message){
 		    sendChangeMessage(this.parentElement.id,this.value);
 		});
 }
+//付箋編集用ボタン作成
+function createEditButton(){
+    return $(document.createElement("input"))
+	.attr({  type: "button",
+		 value: "edit"}) 
+        .click(dialogClick);
+
+}
+
 //付箋削除用ボタン作成
 function createDeleteButton(){
     return $(document.createElement("input"))
@@ -194,3 +218,31 @@ function create_privateid( n ){
         r += CODE_TABLE.charAt(Math.floor(k * Math.random()));
     return r;
 }
+
+
+//編集ボタンがおされたときのdialogの作成
+function dialogClick() {
+    
+    $("#dialog")
+	.dialog({
+		    autoOpen: false,
+		    title: "change postit",
+		    minWidth: 300,
+		    minHeight:200,
+		    position:"center",
+		    modal:true, 
+		    buttons: {
+			"Yes": function(event) {
+			    var color = $("#dialog>input[@type='radio']:checked").val();
+			    var divId = $("#dialog").dialog("option","divId");
+			    sendEditMessage(divId,color);
+			    editMessage(divId,color);
+			    $(this).dialog("close");
+			},				       
+			"No": function() { $(this).dialog("close"); }
+		    }
+		});
+    
+    $("#dialog").dialog("option","divId",this.parentElement.id);
+    $("#dialog").dialog("open");
+};
