@@ -17,7 +17,7 @@ var logic = require('./boardLogic');
 
 //ポート番号
 //var port_local = 8080;
-var port_local = 8214;
+var port_local = 8241;
 
 ///////////////////////////////////////////
 // 
