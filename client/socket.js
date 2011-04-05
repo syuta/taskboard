@@ -6,7 +6,7 @@
 
 //var socket = new io.Socket("192.168.1.39",{port:8080}); 
 //var socket = new io.Socket("localhost",{port:8080}); 
-var socket = new io.Socket("taskboardsample.nodester.com",{port:824}); 
+var socket = new io.Socket("127.0.0.1",{port:8081}); 
 
 socket.connect();
 

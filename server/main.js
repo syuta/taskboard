@@ -17,7 +17,7 @@ var logic = require('./boardLogic');
 
 //ポート番号
 //var port_local = 8080;
-var port_local = 8243;
+var port_local = 8081;
 
 ///////////////////////////////////////////
 // 
@@ -36,7 +36,7 @@ console.log("server is running.");
 //
 //////////////////////////////////////////
 var sio = io.listen(server);   
-sio.on('connection', function(client) { 	
+sio.on('connection', function(client) {
 
         // Message受信時のハンドラ
         client.on(
